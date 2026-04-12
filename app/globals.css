@@ -4,11 +4,59 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ─── Nomad Travel 커스텀 테마 ───────────────────────────── */
 @theme inline {
+  /* Terminal Colors */
+  --color-terminal-bg:        #0a0a0f;
+  --color-terminal-secondary: #0d1117;
+  --color-terminal-card:      #111218;
+  --color-terminal-border:    #1e2330;
+
+  /* Neon Accents */
+  --color-neon-green:  #00ffb3;
+  --color-neon-cyan:   #00d4ff;
+  --color-neon-pink:   #ff6b9d;
+  --color-neon-gold:   #ffd700;
+  --color-neon-orange: #ff8c42;
+  --color-neon-purple: #b983ff;
+  --color-neon-teal:   #00b4d8;
+  --color-neon-amber:  #ffb347;
+
+  /* City Theme Colors */
+  --color-city-seoul:       #00ffb3;
+  --color-city-tokyo:       #ff6b9d;
+  --color-city-paris:       #ffd700;
+  --color-city-newyork:     #00d4ff;
+  --color-city-sydney:      #ff8c42;
+  --color-city-barcelona:   #b983ff;
+  --color-city-lisbon:      #00b4d8;
+  --color-city-chiangmai:   #ffb347;
+
+  /* Text */
+  --color-text-dim:    #4a5568;
+  --color-text-muted:  #718096;
+
+  /* Shadows */
+  --shadow-neon-green:  0 0 8px #00ffb3, 0 0 20px rgba(0,255,179,0.3);
+  --shadow-neon-cyan:   0 0 8px #00d4ff, 0 0 20px rgba(0,212,255,0.3);
+  --shadow-neon-pink:   0 0 8px #ff6b9d, 0 0 20px rgba(255,107,157,0.3);
+  --shadow-neon-gold:   0 0 8px #ffd700, 0 0 20px rgba(255,215,0,0.3);
+  --shadow-neon-orange: 0 0 8px #ff8c42, 0 0 20px rgba(255,140,66,0.3);
+  --shadow-neon-purple: 0 0 8px #b983ff, 0 0 20px rgba(185,131,255,0.3);
+  --shadow-neon-teal:   0 0 8px #00b4d8, 0 0 20px rgba(0,180,216,0.3);
+  --shadow-neon-amber:  0 0 8px #ffb347, 0 0 20px rgba(255,179,71,0.3);
+
+  /* Font */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  /* Animations */
+  --animate-blink: blink 1s step-end infinite;
+  --animate-pulse-slow: pulse 3s ease-in-out infinite;
+  --animate-typing-cursor: blink 0.8s step-end infinite;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -49,82 +97,170 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: #0a0a0f;
+  --foreground: #e2e8f0;
+  --card: #111218;
+  --card-foreground: #e2e8f0;
+  --popover: #111218;
+  --popover-foreground: #e2e8f0;
+  --primary: #00ffb3;
+  --primary-foreground: #0a0a0f;
+  --secondary: #1e2330;
+  --secondary-foreground: #e2e8f0;
+  --muted: #1e2330;
+  --muted-foreground: #718096;
+  --accent: #1e2330;
+  --accent-foreground: #e2e8f0;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: #1e2330;
+  --input: #1e2330;
+  --ring: #00ffb3;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --radius: 0.25rem;
+  --sidebar: #0d1117;
+  --sidebar-foreground: #e2e8f0;
+  --sidebar-primary: #00ffb3;
+  --sidebar-primary-foreground: #0a0a0f;
+  --sidebar-accent: #1e2330;
+  --sidebar-accent-foreground: #e2e8f0;
+  --sidebar-border: #1e2330;
+  --sidebar-ring: #00ffb3;
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+/* ─── Keyframes ──────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
+@keyframes slideUp {
+  0%   { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.8; }
+  50%       { opacity: 1; }
+}
+
+/* ─── Base ───────────────────────────────────────────────── */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
-    @apply font-sans;
+    scroll-behavior: smooth;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  }
+  body {
+    background-color: #0a0a0f;
+    color: #e2e8f0;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    overflow-x: hidden;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar       { width: 4px; }
+  ::-webkit-scrollbar-track { background: #0a0a0f; }
+  ::-webkit-scrollbar-thumb { background: #1e2330; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #00ffb3; }
+
+  /* Selection */
+  ::selection { background: rgba(0,255,179,0.2); color: #00ffb3; }
+}
+
+/* ─── Scanline CRT Effect ───────────────────────────────── */
+.scanline-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.06) 2px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+}
+
+/* ─── Neon Glow Text ────────────────────────────────────── */
+.glow-green  { text-shadow: 0 0 8px #00ffb3, 0 0 16px #00ffb3, 0 0 32px rgba(0,255,179,0.5); }
+.glow-cyan   { text-shadow: 0 0 8px #00d4ff, 0 0 16px #00d4ff, 0 0 32px rgba(0,212,255,0.5); }
+.glow-pink   { text-shadow: 0 0 8px #ff6b9d, 0 0 16px #ff6b9d, 0 0 32px rgba(255,107,157,0.5); }
+.glow-gold   { text-shadow: 0 0 8px #ffd700, 0 0 16px #ffd700, 0 0 32px rgba(255,215,0,0.5); }
+.glow-orange { text-shadow: 0 0 8px #ff8c42, 0 0 16px #ff8c42; }
+.glow-purple { text-shadow: 0 0 8px #b983ff, 0 0 16px #b983ff; }
+.glow-teal   { text-shadow: 0 0 8px #00b4d8, 0 0 16px #00b4d8; }
+.glow-amber  { text-shadow: 0 0 8px #ffb347, 0 0 16px #ffb347; }
+
+/* ─── Neon Glow Box ─────────────────────────────────────── */
+.glow-box-green  { box-shadow: 0 0 8px #00ffb3, 0 0 20px rgba(0,255,179,0.2); }
+.glow-box-cyan   { box-shadow: 0 0 8px #00d4ff, 0 0 20px rgba(0,212,255,0.2); }
+.glow-box-pink   { box-shadow: 0 0 8px #ff6b9d, 0 0 20px rgba(255,107,157,0.2); }
+.glow-box-gold   { box-shadow: 0 0 8px #ffd700, 0 0 20px rgba(255,215,0,0.2); }
+.glow-box-orange { box-shadow: 0 0 8px #ff8c42, 0 0 20px rgba(255,140,66,0.2); }
+.glow-box-purple { box-shadow: 0 0 8px #b983ff, 0 0 20px rgba(185,131,255,0.2); }
+.glow-box-teal   { box-shadow: 0 0 8px #00b4d8, 0 0 20px rgba(0,180,216,0.2); }
+.glow-box-amber  { box-shadow: 0 0 8px #ffb347, 0 0 20px rgba(255,179,71,0.2); }
+
+/* ─── Terminal Cursor ───────────────────────────────────── */
+.cursor-blink {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  background-color: #00ffb3;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+}
+
+/* ─── City Card ─────────────────────────────────────────── */
+.city-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.city-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ─── ASCII Section Header ──────────────────────────────── */
+.ascii-header {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Gauge ─────────────────────────────────────────────── */
+.gauge-track {
+  background: #1e2330;
+  height: 6px;
+  border-radius: 1px;
+  overflow: hidden;
+  width: 100%;
+}
+.gauge-fill {
+  height: 100%;
+  border-radius: 1px;
+  transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Grid Background ───────────────────────────────────── */
+.grid-bg {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,255,179,0.08) 0%, transparent 70%),
+    linear-gradient(rgba(30,35,48,0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,35,48,0.4) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* ─── Prefers Reduced Motion ────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-blink,
+  .city-card {
+    animation: none;
+    transition: none;
   }
 }
