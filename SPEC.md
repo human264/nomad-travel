@@ -99,7 +99,7 @@
 
 ## Phase 3 — Explore 페이지
 
-- [ ] **Phase 3 완료**
+- [x] **Phase 3 완료**
 
 ### 개요
 

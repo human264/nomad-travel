@@ -1,5 +1,6 @@
-import { CityData, CityTag, HeroStat, FILTER_TAGS } from './types';
+import { CityData, CityTag, HeroStat, SortOption, FILTER_TAGS } from './types';
 export { FILTER_TAGS };
+export type { SortOption };
 
 export const HERO_STATS: HeroStat[] = [
   { label: 'CITIES',    value: '2,400+',   icon: '◈', sublabel: 'on record' },
@@ -628,6 +629,55 @@ export function filterCities(query: string, tag: CityTag): CityData[] {
       city.name.toLowerCase().includes(q) ||
       city.country.toLowerCase().includes(q);
     return matchesTag && matchesQuery;
+  });
+}
+
+export const SORT_OPTIONS: { value: SortOption; label: string }[] = [
+  { value: 'SCORE',     label: 'NOMAD SCORE' },
+  { value: 'COST_ASC',  label: 'COST ↑' },
+  { value: 'COST_DESC', label: 'COST ↓' },
+  { value: 'NAME',      label: 'NAME A–Z' },
+];
+
+export const BUDGET_PRESETS: { label: string; max: number; min: number }[] = [
+  { label: 'ALL',       min: 0,    max: Infinity },
+  { label: 'UNDER $1K', min: 0,    max: 1000 },
+  { label: '$1K–$2K',   min: 1000, max: 2000 },
+  { label: '$2K–$3K',   min: 2000, max: 3000 },
+  { label: '$3K+',      min: 3000, max: Infinity },
+];
+
+export function filterAndSortCities(
+  query: string,
+  tags: CityTag[],
+  budgetPresetLabel: string,
+  sortBy: SortOption,
+): CityData[] {
+  const q = query.trim().toLowerCase();
+  const preset = BUDGET_PRESETS.find((p) => p.label === budgetPresetLabel) ?? BUDGET_PRESETS[0];
+  const activeTags = tags.filter((t) => t !== 'ALL');
+
+  const filtered = CITIES.filter((city) => {
+    const matchesQuery =
+      q === '' ||
+      city.name.toLowerCase().includes(q) ||
+      city.country.toLowerCase().includes(q);
+
+    const matchesTags =
+      activeTags.length === 0 || activeTags.every((t) => city.tags.includes(t));
+
+    const total = city.costIndex.total;
+    const matchesBudget = total >= preset.min && total <= preset.max;
+
+    return matchesQuery && matchesTags && matchesBudget;
+  });
+
+  return [...filtered].sort((a, b) => {
+    if (sortBy === 'SCORE')     return b.nomadScore - a.nomadScore;
+    if (sortBy === 'COST_ASC')  return a.costIndex.total - b.costIndex.total;
+    if (sortBy === 'COST_DESC') return b.costIndex.total - a.costIndex.total;
+    if (sortBy === 'NAME')      return a.name.localeCompare(b.name);
+    return 0;
   });
 }
 

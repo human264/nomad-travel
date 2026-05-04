@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   Sheet,
   SheetContent,
@@ -14,6 +15,7 @@ import { logout } from '@/app/auth/actions';
 
 export default function Navbar({ user }: { user: User | null }) {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 10);
@@ -40,16 +42,25 @@ export default function Navbar({ user }: { user: User | null }) {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-1">
-          {NAV_LINKS.map((link) => (
-            <li key={link.label}>
-              <Link
-                href={link.href}
-                className="px-3 py-1.5 text-xs tracking-widest text-[#718096] hover:text-[#00ffb3] hover:glow-green transition-colors"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = link.href === '/'
+              ? pathname === '/'
+              : pathname.startsWith(link.href);
+            return (
+              <li key={link.label}>
+                <Link
+                  href={link.href}
+                  className={`px-3 py-1.5 text-xs tracking-widest transition-colors ${
+                    isActive
+                      ? 'text-[#00ffb3] glow-green'
+                      : 'text-[#718096] hover:text-[#00ffb3] hover:glow-green'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Desktop Auth */}
@@ -89,16 +100,25 @@ export default function Navbar({ user }: { user: User | null }) {
                 <span className="text-sm font-bold tracking-widest text-[#e2e8f0]">NOMAD.TRAVEL</span>
               </div>
               <ul className="space-y-1">
-                {NAV_LINKS.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="block px-3 py-2 text-xs tracking-widest text-[#718096] hover:text-[#00ffb3] hover:bg-[#00ffb3]/5 transition-colors"
-                    >
-                      &gt; {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {NAV_LINKS.map((link) => {
+                  const isActive = link.href === '/'
+                    ? pathname === '/'
+                    : pathname.startsWith(link.href);
+                  return (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className={`block px-3 py-2 text-xs tracking-widest transition-colors hover:bg-[#00ffb3]/5 ${
+                          isActive
+                            ? 'text-[#00ffb3] glow-green'
+                            : 'text-[#718096] hover:text-[#00ffb3]'
+                        }`}
+                      >
+                        &gt; {link.label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
               <div className="mt-6 pt-6 border-t border-[#1e2330]">
                 {user ? (
