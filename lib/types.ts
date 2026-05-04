@@ -21,6 +21,41 @@ export interface CostIndex {
   nomadScore: number;
 }
 
+export interface CoworkingSpace {
+  name: string;
+  pricePerDay: number;
+  speedMbps: number;
+}
+
+export interface Neighborhood {
+  name: string;
+  vibe: string;
+  avgRent: number;
+}
+
+export interface VisaInfo {
+  visaFreeDays: number;
+  digitalNomadVisa: boolean;
+  digitalNomadVisaNote: string;
+  workPermitDifficulty: 'LOW' | 'MEDIUM' | 'HIGH';
+}
+
+export interface MonthlyWeather {
+  month: string;
+  tempLow: number;
+  tempHigh: number;
+  rainDays: number;
+}
+
+export interface CityDetails {
+  coworkingSpaces: CoworkingSpace[];
+  neighborhoods: Neighborhood[];
+  visa: VisaInfo;
+  monthlyWeather: MonthlyWeather[];
+  pros: string[];
+  cons: string[];
+}
+
 export interface CityData {
   id: string;
   name: string;
@@ -44,6 +79,7 @@ export interface CityData {
   tags: CityTag[];
   internetSpeed: string;
   costIndex: CostIndex;
+  details: CityDetails;
 }
 
 export interface HeroStat {

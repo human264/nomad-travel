@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { CityData } from '@/lib/types';
 import AsciiSkyline from './AsciiSkyline';
 import NomadScoreGauge from './NomadScoreGauge';
@@ -97,17 +98,13 @@ export default function CityCard({ city }: { city: CityData }) {
         >
           ♡ SAVE
         </Button>
-        <Button
-          size="sm"
-          className="flex-1 text-[10px] tracking-widest border rounded-none h-7 transition-all"
-          style={{
-            borderColor: city.colorTheme,
-            color: city.colorTheme,
-            background: 'transparent',
-          }}
+        <Link
+          href={`/cities/${city.id}`}
+          className="flex-1 inline-flex items-center justify-center text-[10px] tracking-widest border rounded-none h-7 transition-all hover:opacity-80"
+          style={{ borderColor: city.colorTheme, color: city.colorTheme }}
         >
           ✈ EXPLORE →
-        </Button>
+        </Link>
       </div>
     </div>
   );

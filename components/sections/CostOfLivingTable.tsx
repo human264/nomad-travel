@@ -1,3 +1,6 @@
+'use client';
+
+import { useSearchParams } from 'next/navigation';
 import {
   Table,
   TableBody,
@@ -6,9 +9,14 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { CITIES } from '@/lib/data';
+import { filterCities } from '@/lib/data';
+import type { CityTag } from '@/lib/types';
 
 export default function CostOfLivingTable() {
+  const searchParams = useSearchParams();
+  const q = searchParams.get('q') ?? '';
+  const tag = (searchParams.get('tag') as CityTag) ?? 'ALL';
+  const cities = filterCities(q, tag);
   return (
     <section className="max-w-7xl mx-auto px-4 pb-16">
       {/* Section Header */}
@@ -48,7 +56,17 @@ export default function CostOfLivingTable() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {CITIES.map((city) => (
+            {cities.length === 0 && (
+              <TableRow>
+                <TableCell
+                  colSpan={6}
+                  className="text-center py-8 text-[#4a5568] text-[10px] tracking-wide font-mono"
+                >
+                  {'> NO_DATA — adjust filters to view cost index'}
+                </TableCell>
+              </TableRow>
+            )}
+            {cities.map((city) => (
               <TableRow
                 key={city.id}
                 className="border-b border-[#1e2330]/50 hover:bg-[#111218]/50 transition-colors"

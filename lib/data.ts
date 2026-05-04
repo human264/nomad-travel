@@ -1,4 +1,4 @@
-import { CityData, HeroStat, FILTER_TAGS } from './types';
+import { CityData, CityTag, HeroStat, FILTER_TAGS } from './types';
 export { FILTER_TAGS };
 
 export const HERO_STATS: HeroStat[] = [
@@ -36,6 +36,49 @@ export const CITIES: CityData[] = [
     tags: ['ASIA', 'METROPOLIS', 'WARM'],
     internetSpeed: '250 Mbps',
     costIndex: { rent: 900, food: 350, transport: 60, total: 1500, nomadScore: 92 },
+    details: {
+      coworkingSpaces: [
+        { name: 'Hive Arena Gangnam', pricePerDay: 18, speedMbps: 500 },
+        { name: 'Cafe Bene Cowork Mapo', pricePerDay: 8, speedMbps: 200 },
+        { name: 'SpaceCloud Hongdae', pricePerDay: 22, speedMbps: 600 },
+      ],
+      neighborhoods: [
+        { name: 'Gangnam', vibe: 'Business district, high-end cafes', avgRent: 1200 },
+        { name: 'Hongdae', vibe: 'Art, nightlife, young creatives', avgRent: 750 },
+        { name: 'Itaewon', vibe: 'International, expat-friendly', avgRent: 850 },
+      ],
+      visa: {
+        visaFreeDays: 90,
+        digitalNomadVisa: false,
+        digitalNomadVisaNote: '',
+        workPermitDifficulty: 'MEDIUM',
+      },
+      monthlyWeather: [
+        { month: 'JAN', tempLow: -6, tempHigh: 2,  rainDays: 3  },
+        { month: 'FEB', tempLow: -4, tempHigh: 5,  rainDays: 4  },
+        { month: 'MAR', tempLow:  2, tempHigh: 12, rainDays: 6  },
+        { month: 'APR', tempLow:  9, tempHigh: 19, rainDays: 8  },
+        { month: 'MAY', tempLow: 14, tempHigh: 24, rainDays: 9  },
+        { month: 'JUN', tempLow: 19, tempHigh: 28, rainDays: 11 },
+        { month: 'JUL', tempLow: 23, tempHigh: 30, rainDays: 16 },
+        { month: 'AUG', tempLow: 24, tempHigh: 31, rainDays: 14 },
+        { month: 'SEP', tempLow: 18, tempHigh: 26, rainDays: 9  },
+        { month: 'OCT', tempLow: 10, tempHigh: 20, rainDays: 5  },
+        { month: 'NOV', tempLow:  2, tempHigh: 12, rainDays: 5  },
+        { month: 'DEC', tempLow: -4, tempHigh: 4,  rainDays: 3  },
+      ],
+      pros: [
+        'World-class public transit (T-money card)',
+        'Fastest internet speeds on the planet',
+        'Incredible food scene at every budget',
+        'Safe, walkable, and foreigner-friendly',
+      ],
+      cons: [
+        'Language barrier outside tourist zones',
+        'Long work culture can feel isolating',
+        'Air quality (fine dust) in winter/spring',
+      ],
+    },
   },
   {
     id: 'tokyo',
@@ -65,6 +108,50 @@ export const CITIES: CityData[] = [
     tags: ['ASIA', 'METROPOLIS', 'LUXURY'],
     internetSpeed: '300 Mbps',
     costIndex: { rent: 1400, food: 500, transport: 80, total: 2200, nomadScore: 94 },
+    details: {
+      coworkingSpaces: [
+        { name: 'WeWork Shinjuku', pricePerDay: 30, speedMbps: 400 },
+        { name: 'Fabbit Akihabara', pricePerDay: 18, speedMbps: 300 },
+        { name: 'BIZ SMART Shibuya', pricePerDay: 22, speedMbps: 350 },
+      ],
+      neighborhoods: [
+        { name: 'Shibuya', vibe: 'Trendy, tech startups, young energy', avgRent: 1600 },
+        { name: 'Shimokitazawa', vibe: 'Indie, artists, vintage shops', avgRent: 1100 },
+        { name: 'Akihabara', vibe: 'Tech, gaming, otaku culture', avgRent: 1300 },
+      ],
+      visa: {
+        visaFreeDays: 90,
+        digitalNomadVisa: false,
+        digitalNomadVisaNote: '',
+        workPermitDifficulty: 'HIGH',
+      },
+      monthlyWeather: [
+        { month: 'JAN', tempLow:  1, tempHigh:  9, rainDays: 5  },
+        { month: 'FEB', tempLow:  2, tempHigh: 10, rainDays: 6  },
+        { month: 'MAR', tempLow:  5, tempHigh: 14, rainDays: 10 },
+        { month: 'APR', tempLow: 10, tempHigh: 20, rainDays: 11 },
+        { month: 'MAY', tempLow: 15, tempHigh: 24, rainDays: 12 },
+        { month: 'JUN', tempLow: 19, tempHigh: 27, rainDays: 15 },
+        { month: 'JUL', tempLow: 23, tempHigh: 31, rainDays: 12 },
+        { month: 'AUG', tempLow: 24, tempHigh: 33, rainDays: 9  },
+        { month: 'SEP', tempLow: 20, tempHigh: 28, rainDays: 13 },
+        { month: 'OCT', tempLow: 14, tempHigh: 22, rainDays: 11 },
+        { month: 'NOV', tempLow:  8, tempHigh: 16, rainDays: 8  },
+        { month: 'DEC', tempLow:  3, tempHigh: 11, rainDays: 5  },
+      ],
+      pros: [
+        'Hyper-efficient public transportation',
+        'Extremely safe with ultra-low crime rates',
+        'Unmatched food culture and variety',
+        'Reliable, lightning-fast internet everywhere',
+      ],
+      cons: [
+        'Very high cost of living overall',
+        'Language barrier in everyday situations',
+        'Work visa and residency are difficult to obtain',
+        'Small apartments for the price',
+      ],
+    },
   },
   {
     id: 'paris',
@@ -94,6 +181,50 @@ export const CITIES: CityData[] = [
     tags: ['EUROPE', 'METROPOLIS', 'LUXURY'],
     internetSpeed: '180 Mbps',
     costIndex: { rent: 1800, food: 600, transport: 90, total: 2800, nomadScore: 91 },
+    details: {
+      coworkingSpaces: [
+        { name: 'Nextdoor République', pricePerDay: 25, speedMbps: 300 },
+        { name: 'Anticafé Opéra', pricePerDay: 20, speedMbps: 200 },
+        { name: 'Station F Campus', pricePerDay: 35, speedMbps: 500 },
+      ],
+      neighborhoods: [
+        { name: 'Le Marais', vibe: 'Historic, galleries, great cafes', avgRent: 2200 },
+        { name: 'Bastille', vibe: 'Vibrant, markets, young professionals', avgRent: 1800 },
+        { name: 'Montmartre', vibe: 'Artistic, bohemian, scenic views', avgRent: 1600 },
+      ],
+      visa: {
+        visaFreeDays: 90,
+        digitalNomadVisa: false,
+        digitalNomadVisaNote: '',
+        workPermitDifficulty: 'MEDIUM',
+      },
+      monthlyWeather: [
+        { month: 'JAN', tempLow:  3, tempHigh:  7, rainDays: 11 },
+        { month: 'FEB', tempLow:  3, tempHigh:  8, rainDays: 10 },
+        { month: 'MAR', tempLow:  5, tempHigh: 13, rainDays: 11 },
+        { month: 'APR', tempLow:  7, tempHigh: 16, rainDays: 12 },
+        { month: 'MAY', tempLow: 11, tempHigh: 20, rainDays: 12 },
+        { month: 'JUN', tempLow: 14, tempHigh: 24, rainDays: 10 },
+        { month: 'JUL', tempLow: 16, tempHigh: 26, rainDays: 8  },
+        { month: 'AUG', tempLow: 16, tempHigh: 26, rainDays: 8  },
+        { month: 'SEP', tempLow: 13, tempHigh: 22, rainDays: 9  },
+        { month: 'OCT', tempLow: 10, tempHigh: 16, rainDays: 11 },
+        { month: 'NOV', tempLow:  6, tempHigh: 11, rainDays: 12 },
+        { month: 'DEC', tempLow:  3, tempHigh:  8, rainDays: 11 },
+      ],
+      pros: [
+        'World-class museums and cultural institutions',
+        'Excellent public transit (Métro + RER)',
+        'Strong startup ecosystem (Station F)',
+        'Central hub for European travel',
+      ],
+      cons: [
+        'Very high rent, especially central arrondissements',
+        'Bureaucratic visa and residency process',
+        'Locals expect French — English rarely spoken outside tourism',
+        'Pickpocketing common in tourist areas',
+      ],
+    },
   },
   {
     id: 'newyork',
@@ -123,6 +254,50 @@ export const CITIES: CityData[] = [
     tags: ['AMERICAS', 'METROPOLIS', 'LUXURY'],
     internetSpeed: '220 Mbps',
     costIndex: { rent: 3000, food: 700, transport: 130, total: 4500, nomadScore: 88 },
+    details: {
+      coworkingSpaces: [
+        { name: 'WeWork Times Square', pricePerDay: 55, speedMbps: 500 },
+        { name: 'The Wing SoHo', pricePerDay: 45, speedMbps: 400 },
+        { name: 'Industrious Midtown', pricePerDay: 50, speedMbps: 450 },
+      ],
+      neighborhoods: [
+        { name: 'Brooklyn',  vibe: 'Creative, diverse, startup scene', avgRent: 2600 },
+        { name: 'Lower East Side', vibe: 'Gritty, artistic, great nightlife', avgRent: 3000 },
+        { name: 'Astoria (Queens)', vibe: 'Diverse, affordable, local feel', avgRent: 2200 },
+      ],
+      visa: {
+        visaFreeDays: 90,
+        digitalNomadVisa: false,
+        digitalNomadVisaNote: '',
+        workPermitDifficulty: 'HIGH',
+      },
+      monthlyWeather: [
+        { month: 'JAN', tempLow: -3, tempHigh:  4, rainDays: 11 },
+        { month: 'FEB', tempLow: -3, tempHigh:  6, rainDays: 10 },
+        { month: 'MAR', tempLow:  2, tempHigh: 12, rainDays: 11 },
+        { month: 'APR', tempLow:  8, tempHigh: 17, rainDays: 12 },
+        { month: 'MAY', tempLow: 13, tempHigh: 23, rainDays: 12 },
+        { month: 'JUN', tempLow: 18, tempHigh: 28, rainDays: 11 },
+        { month: 'JUL', tempLow: 21, tempHigh: 31, rainDays: 11 },
+        { month: 'AUG', tempLow: 21, tempHigh: 30, rainDays: 10 },
+        { month: 'SEP', tempLow: 16, tempHigh: 26, rainDays: 9  },
+        { month: 'OCT', tempLow: 10, tempHigh: 19, rainDays: 10 },
+        { month: 'NOV', tempLow:  4, tempHigh: 13, rainDays: 10 },
+        { month: 'DEC', tempLow: -1, tempHigh:  7, rainDays: 11 },
+      ],
+      pros: [
+        'Unparalleled networking and professional opportunities',
+        'World-class arts, food, and entertainment scene',
+        'English-speaking — no language barrier',
+        'Massive nomad and expat community',
+      ],
+      cons: [
+        'Extremely high cost of living — one of world\'s most expensive',
+        'Work visa (H-1B) is lottery-based and highly competitive',
+        'Small apartments at very high prices',
+        'Subway reliability can be frustrating',
+      ],
+    },
   },
   {
     id: 'sydney',
@@ -152,6 +327,50 @@ export const CITIES: CityData[] = [
     tags: ['BEACH', 'WARM', 'LUXURY'],
     internetSpeed: '100 Mbps',
     costIndex: { rent: 2200, food: 550, transport: 110, total: 3400, nomadScore: 85 },
+    details: {
+      coworkingSpaces: [
+        { name: 'Tank Stream Labs', pricePerDay: 35, speedMbps: 250 },
+        { name: 'Fishburners Sydney', pricePerDay: 25, speedMbps: 200 },
+        { name: 'Stone & Chalk Barangaroo', pricePerDay: 40, speedMbps: 300 },
+      ],
+      neighborhoods: [
+        { name: 'Surry Hills', vibe: 'Cafes, creatives, inner-city buzz', avgRent: 2400 },
+        { name: 'Newtown', vibe: 'Bohemian, student area, live music', avgRent: 1900 },
+        { name: 'Manly', vibe: 'Beach town, relaxed, family-friendly', avgRent: 2100 },
+      ],
+      visa: {
+        visaFreeDays: 90,
+        digitalNomadVisa: false,
+        digitalNomadVisaNote: '',
+        workPermitDifficulty: 'MEDIUM',
+      },
+      monthlyWeather: [
+        { month: 'JAN', tempLow: 19, tempHigh: 27, rainDays: 12 },
+        { month: 'FEB', tempLow: 19, tempHigh: 27, rainDays: 12 },
+        { month: 'MAR', tempLow: 17, tempHigh: 25, rainDays: 13 },
+        { month: 'APR', tempLow: 14, tempHigh: 22, rainDays: 12 },
+        { month: 'MAY', tempLow: 11, tempHigh: 18, rainDays: 12 },
+        { month: 'JUN', tempLow:  8, tempHigh: 16, rainDays: 12 },
+        { month: 'JUL', tempLow:  7, tempHigh: 15, rainDays: 9  },
+        { month: 'AUG', tempLow:  8, tempHigh: 17, rainDays: 9  },
+        { month: 'SEP', tempLow: 11, tempHigh: 20, rainDays: 10 },
+        { month: 'OCT', tempLow: 14, tempHigh: 22, rainDays: 12 },
+        { month: 'NOV', tempLow: 16, tempHigh: 24, rainDays: 12 },
+        { month: 'DEC', tempLow: 18, tempHigh: 26, rainDays: 12 },
+      ],
+      pros: [
+        'Beautiful beaches within city limits',
+        'Strong English-speaking tech community',
+        'Excellent quality of life and outdoor lifestyle',
+        'Safe and politically stable',
+      ],
+      cons: [
+        'Geographically isolated — long flights to everywhere',
+        'High cost of living similar to major US cities',
+        'Slow NBN internet compared to Asia',
+        'Work visa tied to employer sponsorship',
+      ],
+    },
   },
   {
     id: 'barcelona',
@@ -181,6 +400,50 @@ export const CITIES: CityData[] = [
     tags: ['EUROPE', 'BEACH', 'WARM', 'BUDGET'],
     internetSpeed: '160 Mbps',
     costIndex: { rent: 1100, food: 420, transport: 70, total: 1800, nomadScore: 90 },
+    details: {
+      coworkingSpaces: [
+        { name: 'Aticco Eixample', pricePerDay: 22, speedMbps: 300 },
+        { name: 'MOB Bailén', pricePerDay: 18, speedMbps: 250 },
+        { name: 'Betahaus Barcelona', pricePerDay: 20, speedMbps: 200 },
+      ],
+      neighborhoods: [
+        { name: 'Eixample', vibe: 'Modernist architecture, central, walkable', avgRent: 1200 },
+        { name: 'Gràcia', vibe: 'Bohemian village feel, great squares', avgRent: 1000 },
+        { name: 'Poblenou', vibe: 'Tech hub (22@), beach nearby, up-and-coming', avgRent: 1100 },
+      ],
+      visa: {
+        visaFreeDays: 90,
+        digitalNomadVisa: true,
+        digitalNomadVisaNote: 'Spain Digital Nomad Visa — requires proof of remote income (min €2,334/mo)',
+        workPermitDifficulty: 'LOW',
+      },
+      monthlyWeather: [
+        { month: 'JAN', tempLow:  6, tempHigh: 13, rainDays: 6  },
+        { month: 'FEB', tempLow:  7, tempHigh: 14, rainDays: 5  },
+        { month: 'MAR', tempLow:  9, tempHigh: 17, rainDays: 7  },
+        { month: 'APR', tempLow: 11, tempHigh: 19, rainDays: 9  },
+        { month: 'MAY', tempLow: 14, tempHigh: 22, rainDays: 8  },
+        { month: 'JUN', tempLow: 18, tempHigh: 26, rainDays: 5  },
+        { month: 'JUL', tempLow: 21, tempHigh: 29, rainDays: 3  },
+        { month: 'AUG', tempLow: 22, tempHigh: 30, rainDays: 4  },
+        { month: 'SEP', tempLow: 19, tempHigh: 27, rainDays: 7  },
+        { month: 'OCT', tempLow: 15, tempHigh: 22, rainDays: 9  },
+        { month: 'NOV', tempLow: 10, tempHigh: 17, rainDays: 7  },
+        { month: 'DEC', tempLow:  7, tempHigh: 14, rainDays: 6  },
+      ],
+      pros: [
+        'Digital Nomad Visa makes legal stay straightforward',
+        'Warm Mediterranean climate year-round',
+        'Beach access combined with urban amenities',
+        'Vibrant social and nightlife scene',
+      ],
+      cons: [
+        'Pickpocketing is very common — stay alert',
+        'Language barrier (Catalan + Spanish)',
+        'Rent rising fast as the city becomes more popular',
+        'Bureaucracy can be slow and frustrating',
+      ],
+    },
   },
   {
     id: 'lisbon',
@@ -210,6 +473,50 @@ export const CITIES: CityData[] = [
     tags: ['EUROPE', 'BEACH', 'WARM', 'BUDGET'],
     internetSpeed: '140 Mbps',
     costIndex: { rent: 1000, food: 380, transport: 65, total: 1600, nomadScore: 89 },
+    details: {
+      coworkingSpaces: [
+        { name: 'Second Home Lisboa', pricePerDay: 20, speedMbps: 200 },
+        { name: 'Heden Chiado', pricePerDay: 15, speedMbps: 150 },
+        { name: 'Selina Secret Garden', pricePerDay: 18, speedMbps: 180 },
+      ],
+      neighborhoods: [
+        { name: 'Mouraria', vibe: 'Historic, multicultural, authentic fado', avgRent: 950 },
+        { name: 'LX Factory (Alcântara)', vibe: 'Creative hub, markets, cool restaurants', avgRent: 1100 },
+        { name: 'Intendente', vibe: 'Up-and-coming, affordable, diverse community', avgRent: 800 },
+      ],
+      visa: {
+        visaFreeDays: 90,
+        digitalNomadVisa: true,
+        digitalNomadVisaNote: 'D8 Digital Nomad Visa — requires minimum income of ~€3,280/mo',
+        workPermitDifficulty: 'LOW',
+      },
+      monthlyWeather: [
+        { month: 'JAN', tempLow:  8, tempHigh: 14, rainDays: 11 },
+        { month: 'FEB', tempLow:  9, tempHigh: 16, rainDays: 10 },
+        { month: 'MAR', tempLow: 10, tempHigh: 18, rainDays: 10 },
+        { month: 'APR', tempLow: 12, tempHigh: 20, rainDays: 10 },
+        { month: 'MAY', tempLow: 14, tempHigh: 23, rainDays: 7  },
+        { month: 'JUN', tempLow: 17, tempHigh: 27, rainDays: 4  },
+        { month: 'JUL', tempLow: 19, tempHigh: 30, rainDays: 1  },
+        { month: 'AUG', tempLow: 19, tempHigh: 30, rainDays: 2  },
+        { month: 'SEP', tempLow: 17, tempHigh: 27, rainDays: 5  },
+        { month: 'OCT', tempLow: 14, tempHigh: 22, rainDays: 9  },
+        { month: 'NOV', tempLow: 10, tempHigh: 17, rainDays: 11 },
+        { month: 'DEC', tempLow:  8, tempHigh: 14, rainDays: 11 },
+      ],
+      pros: [
+        'D8 Digital Nomad Visa is one of Europe\'s best',
+        'One of the most affordable Western European capitals',
+        'Mild, sunny weather nearly year-round',
+        'Welcoming locals — English widely spoken',
+      ],
+      cons: [
+        'Rent prices rising sharply due to nomad influx',
+        'Public transit outside the centre is limited',
+        'Smaller city — fewer big-company networking opportunities',
+        'Internet speeds lag behind Northern Europe',
+      ],
+    },
   },
   {
     id: 'chiangmai',
@@ -239,6 +546,50 @@ export const CITIES: CityData[] = [
     tags: ['ASIA', 'MOUNTAIN', 'WARM', 'BUDGET'],
     internetSpeed: '120 Mbps',
     costIndex: { rent: 400, food: 200, transport: 40, total: 800, nomadScore: 87 },
+    details: {
+      coworkingSpaces: [
+        { name: 'CAMP @ Maya Mall', pricePerDay: 5, speedMbps: 100 },
+        { name: 'Punspace Nimman', pricePerDay: 10, speedMbps: 150 },
+        { name: 'Yellow (Alt_ChiangMai)', pricePerDay: 12, speedMbps: 200 },
+      ],
+      neighborhoods: [
+        { name: 'Nimman (Nimmanhaemin)', vibe: 'Nomad central, cafes, rooftop bars', avgRent: 450 },
+        { name: 'Old City', vibe: 'Historic temples, budget-friendly, cultural', avgRent: 350 },
+        { name: 'Santitham', vibe: 'Local neighbourhood, authentic, very affordable', avgRent: 280 },
+      ],
+      visa: {
+        visaFreeDays: 30,
+        digitalNomadVisa: true,
+        digitalNomadVisaNote: 'Thailand LTR (Long-Term Resident) Visa — requires $80K annual income',
+        workPermitDifficulty: 'LOW',
+      },
+      monthlyWeather: [
+        { month: 'JAN', tempLow: 13, tempHigh: 29, rainDays: 2  },
+        { month: 'FEB', tempLow: 15, tempHigh: 32, rainDays: 2  },
+        { month: 'MAR', tempLow: 18, tempHigh: 35, rainDays: 4  },
+        { month: 'APR', tempLow: 21, tempHigh: 37, rainDays: 6  },
+        { month: 'MAY', tempLow: 22, tempHigh: 35, rainDays: 15 },
+        { month: 'JUN', tempLow: 23, tempHigh: 33, rainDays: 16 },
+        { month: 'JUL', tempLow: 23, tempHigh: 31, rainDays: 18 },
+        { month: 'AUG', tempLow: 23, tempHigh: 31, rainDays: 20 },
+        { month: 'SEP', tempLow: 22, tempHigh: 30, rainDays: 18 },
+        { month: 'OCT', tempLow: 21, tempHigh: 30, rainDays: 13 },
+        { month: 'NOV', tempLow: 17, tempHigh: 29, rainDays: 5  },
+        { month: 'DEC', tempLow: 13, tempHigh: 28, rainDays: 2  },
+      ],
+      pros: [
+        'Extremely low cost of living — budget nomad paradise',
+        'World\'s largest nomad hub with huge community',
+        'Incredible street food scene',
+        'Warm, tropical climate most of the year',
+      ],
+      cons: [
+        'Visa runs required every 30–60 days without LTR',
+        'Severe air quality (smoke season) Feb–April',
+        'Limited career networking compared to major cities',
+        'Heat and humidity can be intense April–May',
+      ],
+    },
   },
 ];
 
@@ -261,12 +612,24 @@ export const CTA_BENEFITS = [
 ];
 
 export const NAV_LINKS = [
-  { label: 'HOME',    href: '#' },
-  { label: 'EXPLORE', href: '#' },
-  { label: 'MAP',     href: '#' },
-  { label: 'SAVED',   href: '#' },
-  { label: 'JOURNAL', href: '#' },
+  { label: 'HOME',    href: '/' },
+  { label: 'EXPLORE', href: '/explore' },
+  { label: 'MAP',     href: '/map' },
+  { label: 'SAVED',   href: '/saved' },
+  { label: 'JOURNAL', href: '/journal' },
 ];
+
+export function filterCities(query: string, tag: CityTag): CityData[] {
+  const q = query.trim().toLowerCase();
+  return CITIES.filter((city) => {
+    const matchesTag = tag === 'ALL' || city.tags.includes(tag);
+    const matchesQuery =
+      q === '' ||
+      city.name.toLowerCase().includes(q) ||
+      city.country.toLowerCase().includes(q);
+    return matchesTag && matchesQuery;
+  });
+}
 
 export const FOOTER_LINKS = {
   EXPLORE:   ['Cities', 'Map', 'Rankings', 'Compare'],
