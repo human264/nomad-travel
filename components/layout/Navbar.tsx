@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import {
   Sheet,
   SheetContent,
@@ -9,8 +9,10 @@ import {
 } from '@/components/ui/sheet';
 import { NAV_LINKS } from '@/lib/data';
 import { Menu } from 'lucide-react';
+import type { User } from '@supabase/supabase-js';
+import { logout } from '@/app/auth/actions';
 
-export default function Navbar() {
+export default function Navbar({ user }: { user: User | null }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -29,45 +31,53 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2 group">
           <span className="text-[#00ffb3] glow-green text-lg group-hover:animate-pulse">✈</span>
           <span className="text-sm font-bold tracking-widest text-[#e2e8f0] group-hover:text-[#00ffb3] transition-colors">
             NOMAD.TRAVEL
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <a
+              <Link
                 href={link.href}
                 className="px-3 py-1.5 text-xs tracking-widest text-[#718096] hover:text-[#00ffb3] hover:glow-green transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
-        {/* Desktop Login */}
+        {/* Desktop Auth */}
         <div className="hidden md:flex items-center gap-3">
           <span className="text-[#4a5568] text-xs">|</span>
-          <Button
-            variant="outline"
-            size="sm"
-            className="text-xs tracking-widest border-[#00ffb3] text-[#00ffb3] bg-transparent hover:bg-[#00ffb3]/10 hover:shadow-[0_0_8px_#00ffb3] rounded-none h-7 px-3 transition-all"
-          >
-            LOGIN &gt;
-          </Button>
+          {user ? (
+            <form action={logout}>
+              <button
+                type="submit"
+                className="text-xs tracking-widest border border-[#4a5568] text-[#718096] bg-transparent hover:border-red-500/50 hover:text-red-400 h-7 px-3 transition-all"
+              >
+                LOGOUT
+              </button>
+            </form>
+          ) : (
+            <Link
+              href="/login"
+              className="text-xs tracking-widest border border-[#00ffb3] text-[#00ffb3] bg-transparent hover:bg-[#00ffb3]/10 hover:shadow-[0_0_8px_#00ffb3] h-7 px-3 transition-all inline-flex items-center"
+            >
+              LOGIN &gt;
+            </Link>
+          )}
         </div>
 
         {/* Mobile Hamburger */}
         <Sheet>
-          <SheetTrigger className="md:hidden">
-            <button className="text-[#718096] hover:text-[#00ffb3] p-2 transition-colors">
-              <Menu className="w-4 h-4" />
-            </button>
+          <SheetTrigger className="md:hidden text-[#718096] hover:text-[#00ffb3] p-2 transition-colors bg-transparent border-none cursor-pointer">
+            <Menu className="w-4 h-4" />
           </SheetTrigger>
           <SheetContent
             side="right"
@@ -81,22 +91,33 @@ export default function Navbar() {
               <ul className="space-y-1">
                 {NAV_LINKS.map((link) => (
                   <li key={link.label}>
-                    <a
+                    <Link
                       href={link.href}
                       className="block px-3 py-2 text-xs tracking-widest text-[#718096] hover:text-[#00ffb3] hover:bg-[#00ffb3]/5 transition-colors"
                     >
                       &gt; {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
               <div className="mt-6 pt-6 border-t border-[#1e2330]">
-                <Button
-                  variant="outline"
-                  className="w-full text-xs tracking-widest border-[#00ffb3] text-[#00ffb3] bg-transparent hover:bg-[#00ffb3]/10 rounded-none"
-                >
-                  LOGIN &gt;
-                </Button>
+                {user ? (
+                  <form action={logout}>
+                    <button
+                      type="submit"
+                      className="w-full text-xs tracking-widest border border-[#4a5568] text-[#718096] bg-transparent hover:border-red-500/50 hover:text-red-400 py-2 transition-all"
+                    >
+                      LOGOUT
+                    </button>
+                  </form>
+                ) : (
+                  <Link
+                    href="/login"
+                    className="w-full text-xs tracking-widest border border-[#00ffb3] text-[#00ffb3] bg-transparent hover:bg-[#00ffb3]/10 py-2 transition-all flex items-center justify-center"
+                  >
+                    LOGIN &gt;
+                  </Link>
+                )}
               </div>
             </div>
           </SheetContent>

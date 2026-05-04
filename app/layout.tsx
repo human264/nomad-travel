@@ -4,6 +4,7 @@ import './globals.css';
 import ScanlineOverlay from '@/components/ui/ScanlineOverlay';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import { createClient } from '@/lib/supabase/server';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -17,12 +18,15 @@ export const metadata: Metadata = {
   description: '한국 디지털 노마드를 위한 도시 정보 플랫폼. 생활비, 날씨, 비자, 코워킹 스페이스를 한눈에 비교하세요.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
   return (
     <html lang="ko" className={jetbrainsMono.variable}>
       <body className="min-h-screen bg-[#0a0a0f] text-[#e2e8f0] font-mono antialiased">
         <ScanlineOverlay />
-        <Navbar />
+        <Navbar user={user} />
         <main>{children}</main>
         <Footer />
       </body>
