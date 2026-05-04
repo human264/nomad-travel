@@ -82,6 +82,8 @@ export interface CityData {
   details: CityDetails;
 }
 
+export type SortOption = 'SCORE' | 'COST_ASC' | 'COST_DESC' | 'NAME';
+
 export interface HeroStat {
   label: string;
   value: string;
